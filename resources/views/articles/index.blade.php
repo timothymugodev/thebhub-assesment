@@ -1,41 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/articles/index.css')}}">
-    <script src="https://kit.fontawesome.com/b114a7d377.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <h1>Articles</h1>
-    <div class="cards">
-        <div class="card" href="#">
-            <div class="card_left">
-                 <i class="fa-regular fa-heart"></i>
-                <img src="https://www.seoclerk.com/pics/588970-11SVGU1519902396.jpg" alt="Article">
-            </div>
-            <div class="card_right">
-                <div class="title">This is my title</div>
-                <div class="article_info">
-                    <div class="author">
-                        <i class="fa-regular fa-user"></i>
-                        <span>Author</span>
-                    </div>
-                    <div class="date">
-                        <i class="fa-regular fa-calendar-alt"></i>
-                        <span>Date</span>
-                    </div>
-                    <div class="like">
-                        <i class="fa-regular fa-heart"></i>
-                        <span>Likes</span>
-                    </div>
+@extends('layouts.app')
+@section('content-header')
+<header class="masthead" style=" background-color: #3f61b5;">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Articles</h1>
                 </div>
-                <a class="read_more" href="#">Read More</a>
             </div>
         </div>
     </div>
-</body>
-</html>
-
+</header>
+@endsection
+@section('main-content')
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
+                    <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Start Bootstrap</a>
+                    on September 24, 2021
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Start Bootstrap</a>
+                    on September 18, 2021
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">Science has not yet mastered prophecy</h2>
+                    <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Start Bootstrap</a>
+                    on August 24, 2021
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">Failure is not an option</h2>
+                    <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Start Bootstrap</a>
+                    on July 8, 2021
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+        </div>
+    </div>
+</div>
+@endsection
