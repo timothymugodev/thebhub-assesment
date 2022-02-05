@@ -1,0 +1,67 @@
+.body{
+    width: 100%;
+}
+.card {
+    display: flex;
+    width : 80%;
+    align-items: center;
+    gap : 40px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.847);
+}
+
+.card_left {
+    width : 280px;
+    height: 200px;
+    user-select: none;
+    position: relative;
+    padding: 0;
+}
+
+.card_left > .fa-heart {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0.847);
+    cursor: pointer;
+}
+
+.card_left > .fa-heart:hover {
+    color: rgba(0, 0, 0, 0.847);
+}
+
+.card_left > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    user-select: none;
+}
+
+.card_right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap : 20px;
+}
+
+.card_right > .title {
+    font-size: 28px;
+    font-weight: 650;
+}
+
+.article_info {
+    display : flex;
+    flex-direction: column;
+    gap : 10px;
+}
+
+.read_more {
+    padding : 10px;
+    font-size : 20px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.847);
+    border: rgba(0, 0, 0, 0.767) solid 2px;
+}
