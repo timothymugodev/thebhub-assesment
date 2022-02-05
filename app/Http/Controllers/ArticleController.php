@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
+use DateTime;
 
 class ArticleController extends Controller
 {
@@ -23,7 +25,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -34,7 +36,27 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validArticleData = $request->validate([
+            'title' => 'required|min:3',
+            'summary' => 'required',
+            'content' => 'required',
+            'author_id' => 'required',
+        ]);
+
+        $articleData = [
+            ...$validArticleData,
+            'article_id' => self::generateArticleId(),
+        ];
+        
+        if($request->ajax){
+            $article = Article::create($articleData);
+            return response()->json($article);
+        }else {
+            Article::create($articleData);
+            return redirect()->route('articles.create')->with('success', 'Article created successfully');
+        }
+        
+
     }
 
     /**
@@ -45,7 +67,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('articles.show', ['article' => Article::findOrFail($id)]);
     }
 
     /**
@@ -80,5 +102,14 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private static function generateArticleId(): string
+    {
+        $date = new DateTime();
+        $str = random_bytes(10) . $date->getTimestamp();
+        $str  = md5($str);
+        $chunked = substr($str, 0, 16);
+        return $chunked;
     }
 }

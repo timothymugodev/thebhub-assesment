@@ -39,14 +39,30 @@
                 <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
                 <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
                 <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-                <p>
-                    Placeholder text by
-                    <a href="http://spaceipsum.com/">Space Ipsum</a>
-                    &middot; Images by
-                    <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
-                </p>
+
             </div>
+            <div class="mt-6">
+                <h2>Leave a Comment</h2>
+                <form class="my-2">
+                    <div class="form-group mt-1">
+                        <label for="author_name">Name</label>
+                        <input type="email" class="form-control" id="author_name" name="author_name" placeholder="Your Name" />
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="content">Comment</label>
+                        <textarea class="form-control" id="content" name="content" rows="3" placeholder="Write your comment"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-sm mt-3">Submit</button>
+                </form>
+            </div>
+
+
         </div>
     </div>
 </article>
 @endsection
+
