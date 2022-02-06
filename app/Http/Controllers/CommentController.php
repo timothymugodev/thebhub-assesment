@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Article;
+use App\Events\CreateCommentEvent;
+use App\Models\Comment;
 use DateTime;
+use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        return view('articles.index', compact('articles'));
+        //
     }
 
     /**
@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        //
     }
 
     /**
@@ -35,29 +35,31 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function createComment(Request $request)
     {
-        $validArticleData = $request->validate([
-            'title' => 'required|min:3',
-            'summary' => 'required',
-            'content' => 'required',
-            'author_id' => 'required',
+        // $validObjectTypes = ["comment", "media", "profile"];
+        $validCommentData = $request->validate([
+            'object_id' => ['string', 'required'],
+            'object_type' => ['string', 'required'],
+            'content' => ['required'],
+            'author_id' => ['required']
+            
         ]);
 
-        $articleData = [
-            ...$validArticleData,
-            'article_id' => self::generateArticleId(),
+        $extraCommentData = [
+            'comment_id' => self::generateCommentId(),
+            
         ];
-        
-        if($request->ajax){
-            $article = Article::create($articleData);
-            return response()->json($article);
-        }else {
-            Article::create($articleData);
-            return redirect()->route('articles.create')->with('success', 'Article created successfully');
-        }
-        
+        $commentDataToStore = array_merge( $extraCommentData, $validCommentData);
 
+        $comment = Comment::create($commentDataToStore);
+        if($comment){
+            event(new CreateCommentEvent($comment));
+            return response()->json(["msg" => "Comment created"], 201);
+        }
+
+        return response()->json(["msg" => "An error aoccured"], 400);
+ 
     }
 
     /**
@@ -68,7 +70,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        return view('articles.show', ['article' => Article::findOrFail($id)]);
+        //
     }
 
     /**
@@ -105,11 +107,11 @@ class ArticleController extends Controller
         //
     }
 
-    private static function generateArticleId(): string
+    private static function generateCommentId(): string
     {
         $date = new DateTime();
         $str = random_bytes(10) . $date->getTimestamp();
-        $str  = sha1($str);
+        $str  = md5($str);
         return $str;
     }
 }

@@ -33,4 +33,7 @@ window.Echo = new Echo({
     disableStats: true,
 });
 
-window.Echo.channel('comments-pipe').listen();
+window.Echo.channel('CommentsChannel')
+.listen('CreateCommentEvent', e =>{
+    console.log(e)
+});

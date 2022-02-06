@@ -18,6 +18,12 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+    public function findAll(Request $request)
+    {
+        $users = User::all();
+        return response()->json(["users" => $users], 200);
+
+    }
     /**
      * Show the form for creating a new resource.
      *

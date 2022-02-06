@@ -31,25 +31,28 @@
             <div class="mt-6">
                 <div class="container mt-5 mb-5">
                     <div class="row height d-flex justify-content-center align-items-center">
-                        <div class="col-md-7">
+                        <div class="col-md-11">
                             <div class="card">
                                 <div class="p-3">
                                     <h6>Comments</h6>
                                 </div>
-                                <form class="mt-3 d-flex flex-row align-items-center p-3 form-color"> 
-                                <img src="https://i.imgur.com/zQZSWrt.jpg" width="50" class="rounded-circle mr-2">
-                                 <input type="text" class="form-control" placeholder="Enter your comment..."> 
-                                 </form>
+                                <form class="mt-3 d-flex flex-row align-items-center p-3 form-color">
+                                    <img src="{{ Auth::user()->photo_url }}" width="50" class="rounded-circle mr-2">
+                                    <input type="text" class="form-control" id="comment-message" placeholder="Enter your comment...">
+                                    <button type="submit" class="d-none" id="comment-submit"></button>
+                                </form>
                                 <div class="mt-2">
-                                    <div class="d-flex flex-row p-3"> <img src="https://i.imgur.com/zQZSWrt.jpg" width="40" height="40" class="rounded-circle mr-3">
+                                    @forelse ( $article->comments as $comment)
+                                    <div class="d-flex flex-row p-3">
+                                     <img src="{{ $comment->user->photo_url }}" width="40" height="40" class="rounded-circle mr-3">
                                         <div class="w-100">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <div class="d-flex flex-row align-items-center">
-                                                    <span class="mr-2">Brian selter</span>
+                                                <div class="d-flex flex-row align-items-center mx-2">
+                                                    <span class="mr-2">{{ $comment->user->name }} </span>
                                                 </div>
-                                                <small>12h ago</small>
+                                                <small>{{ $comment->created_at }}</small>
                                             </div>
-                                            <p class="text-justify comment-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                                            <p class="text-justify comment-text mb-0">{{ $comment->content }}</p>
                                             <div class="d-flex flex-row user-feed">
                                                 <span class="wish">
                                                     <i class="fa fa-heartbeat mr-2"></i>
@@ -58,6 +61,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @empty
+                                       <h2>No comments avaliable</h2>
+                                    @endforelse
+
                                 </div>
                             </div>
                         </div>
@@ -69,5 +76,15 @@
         </div>
     </div>
 </article>
+@endsection
+@section('js')
+<script>
+window.objectId = "{!! $article->article_id !!}"
+window.creator = "{!! Auth::user()->id !!}";
+</script>
+<script src="{{ asset('js/articles/show.js')}}"></script>
+<script>
+
+</script>
 @endsection
 

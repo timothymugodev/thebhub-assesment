@@ -17,6 +17,9 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/b114a7d377.js" crossorigin="anonymous"></script>
 
+    <!-- Sweet Alert -->
+    <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- Bootstrap files -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
     @yield('css')
