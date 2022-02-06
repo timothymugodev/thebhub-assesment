@@ -1,148 +1,45 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/users/index.css')}}" />
+@endsection
+@section('content-header')
+<header class="masthead" style=" background-color: #3f61b5;">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Users</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 @section('main-content')
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+       @forelse ($users as $user)
+         <div class="col-md-4">
             <div class="card user-card">
                 <div class="card-header">
                     <h5>Profile</h5>
                 </div>
                 <div class="card-block">
                     <div class="user-image">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-radius" alt="User-Profile-Image">
+                        <img src="{{ $user->photo_url }}" class="img-radius" alt="User-Profile-Image">
                     </div>
-                    <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
-                    <p class="text-muted">Active | Male | Born 23.05.1992</p>
+                    <h6 class="f-w-600 m-t-25 m-b-10">{{ $user->name }}</h6>
+                    <p class="text-muted">{{ $user->email }}</p>
                     <hr>
-                    <p class="text-muted m-t-15">Activity Level: 87%</p>
-                    <ul class="list-unstyled activity-leval">
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                    <div class="bg-c-blue counter-block m-t-10 p-20">
-                        <div class="row">
-                            <div class="col-4">
-                                <i class="fa fa-comment"></i>
-                                <p>1256</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="fa fa-user"></i>
-                                <p>8562</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="fa fa-suitcase"></i>
-                                <p>189</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="m-t-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <hr>
-                    <div class="row justify-content-center user-social-link">
-                        <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-twitter text-twitter"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-dribbble text-dribbble"></i></a></div>
+                    <div>
+                    <a class="border border-dark border-3 px-2 py-2" href="{{ route('users.show', $user)}}">View Profile</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
+       @empty
+           <h3>No Users</h3>
+       @endforelse
         
-        <div class="col-md-4">
-            <div class="card user-card">
-                <div class="card-header">
-                    <h5>Profile</h5>
-                </div>
-                <div class="card-block">
-                    <div class="user-image">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-radius" alt="User-Profile-Image">
-                    </div>
-                    <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
-                    <p class="text-muted">Active | Male | Born 23.05.1992</p>
-                    <hr>
-                    <p class="text-muted m-t-15">Activity Level: 87%</p>
-                    <ul class="list-unstyled activity-leval">
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                    <div class="bg-c-green counter-block m-t-10 p-20">
-                        <div class="row">
-                            <div class="col-4">
-                                <i class="fa fa-comment"></i>
-                                <p>1256</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="fa fa-user"></i>
-                                <p>8562</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="fa fa-suitcase"></i>
-                                <p>189</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="m-t-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <hr>
-                    <div class="row justify-content-center user-social-link">
-                        <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-twitter text-twitter"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-dribbble text-dribbble"></i></a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class="card user-card">
-                <div class="card-header">
-                    <h5>Profile</h5>
-                </div>
-                <div class="card-block">
-                    <div class="user-image">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-radius" alt="User-Profile-Image">
-                    </div>
-                    <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
-                    <p class="text-muted">Active | Male | Born 23.05.1992</p>
-                    <hr>
-                    <p class="text-muted m-t-15">Activity Level: 87%</p>
-                    <ul class="list-unstyled activity-leval">
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                    <div class="bg-c-yellow counter-block m-t-10 p-20">
-                        <div class="row">
-                            <div class="col-4">
-                                <i class="fa fa-comment"></i>
-                                <p>1256</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="fa fa-user"></i>
-                                <p>8562</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="fa fa-suitcase"></i>
-                                <p>189</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="m-t-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <hr>
-                    <div class="row justify-content-center user-social-link">
-                        <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-twitter text-twitter"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-dribbble text-dribbble"></i></a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
+    </div>
 </div>
 @endsection

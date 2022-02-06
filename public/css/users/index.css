@@ -1,5 +1,4 @@
 body{
-    margin-top:20px;
     background:#f3f3f3;
 }
 
@@ -135,21 +134,6 @@ body{
     padding: 20px;
 }
 
-.user-card .card-block .user-social-link i {
-    font-size: 30px;
-}
-
-.text-facebook {
-    color: #3B5997;
-}
-
-.text-twitter {
-    color: #42C0FB;
-}
-
-.text-dribbble {
-    color: #EC4A89;
-}
 
 .user-card .card-block .user-image:before {
     bottom: 0;
