@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,20 +17,10 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/',function(){
-    return view('login');
-})->name('login');
-
-Route::get('/register', function(){
-    return view('register');
-})->name('register');
-
-
-
 Route::resource('articles', ArticleController::class);
 Route::resource('users', UserController::class);
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
