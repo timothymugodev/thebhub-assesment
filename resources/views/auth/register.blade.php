@@ -27,7 +27,7 @@
         @enderror
 
         <label for="email">Email</label>
-        <input type="email" placeholder="user@email.com" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+        <input type="email" placeholder="user@email.com" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
 
         @error('email')
         <span class="invalid-feedback" role="alert">
@@ -36,15 +36,15 @@
         @enderror
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password" class="@error('password') is-invalid @enderror">
+        <input type="password" placeholder="Password" id="password" name="password" class="@error('password') is-invalid @enderror" required autocomplete="new-password">
         @error('password')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
 
-        <label for="confirm_password">Confirm Password</label>
-        <input type="password" placeholder="Password" id="confirm_password" name="confirm_password">
+        <label for="password-confirm">Confirm Password</label>
+        <input type="password" placeholder="Password" id="password-confirm"  name="password_confirmation" required autocomplete="new-password">
 
         <button>Register</button>
         <p class="alt-auth">Already have an account? <a href="{{ route('login') }}">Login</a></p>

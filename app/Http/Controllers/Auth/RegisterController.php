@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\WelcomeUserEvent;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -64,6 +65,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //Send welcome email to a user
+        event(new WelcomeUserEvent($data));
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
